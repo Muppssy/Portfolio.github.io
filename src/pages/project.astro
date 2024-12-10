@@ -1,0 +1,374 @@
+---
+import "../style/global.css";
+
+import Footer from "../Components/Footer.astro";
+import Contact from "../Components/Contact.astro";
+
+import Navigation from "../Components/Navigation.astro";
+import Settings from "../Components/Settings.astro";
+import Loader from "../Components/Loader.astro";
+import SmallNav from "../Components/SmallNav.astro";
+import Modal from "../Components/Modal.astro";
+
+const firstColorText = [
+  "w-10 h-10 rounded-full bg-gradient-blue cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-gradient-red cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-gradient-orange cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-gradient-green cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-gradient-yellow cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-gradient-pink cursor-pointer hover:border-2 hover:border-neutral-500",
+];
+const secondColorText = [
+  "w-10 h-10 rounded-full bg-blue-500 cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-red-500 cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-orange-500 cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-green-500 cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-yellow-500 cursor-pointer hover:border-2 hover:border-neutral-500",
+  "w-10 h-10 rounded-full bg-pink-500 cursor-pointer hover:border-2 hover:border-neutral-500",
+];
+
+const fontText = [
+  {
+    class:
+      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-roboto hover:border-2 hover:border-white",
+    font: "Aa",
+  },
+  {
+    class:
+      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-poppins hover:border-2 hover:border-white",
+    font: "Aa",
+  },
+  {
+    class:
+      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-raleway hover:border-2 hover:border-white",
+    font: "Aa",
+  },
+];
+
+const fontSecondText = [
+  {
+    class:
+      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-oxanium hover:border-2 hover:border-white",
+    font: "Aa",
+  },
+  {
+    class:
+      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-zendots hover:border-2 hover:border-white",
+    font: "Aa",
+  },
+  {
+    class:
+      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer  font-rakkas hover:border-2 hover:border-white",
+    font: "Aa",
+  },
+];
+
+const contact = [
+  {
+    name: "Email",
+    icon: "fa-solid fa-envelope",
+    adress: "test.emailpro@gmail.com",
+  },
+  {
+    name: "Linkedin",
+    icon: "fa-brands fa-linkedin",
+    adress: "https://www.linkedin.com/in/adrien-moncho/",
+  },
+  { name: "Discord", icon: "fa-brands fa-discord", adress: "Muppssy#5846" },
+];
+
+const mergedData = [
+  {
+    image: "/img/Reservia-mini.webp",
+    title: "Reservia",
+    description:
+      "Deuxième projet du parcours développeur web d' OpenClassroom. A partir d’un cahier des charges fourni par Openclassroom, ma tâche a été de réaliser une maquette uniquement en HTML5 CSS3.",
+    date: "06 - 2021 / 11 - 2021",
+    techno: {
+      html: "/technos/html5.webp",
+      css: "/technos/css3.webp",
+    },
+    link: {
+      github: "https://github.com/Muppssy/Adrien_Moncho_2_30062021",
+      link: "https://muppssy.github.io/Adrien_Moncho_2_30062021/",
+    },
+  },
+  {
+    image: "/img/Ohmyfood.webp",
+    title: "Ohmyfood",
+    description:
+      "Troisième projet du parcours développeur web d' OpenClassroom. L'objectif d'intégrer puis de dynamiser une page web avec des animations CSS en utilisant le préprocesseur Sass.",
+    date: "06 - 2021 / 11 - 2021",
+    techno: {
+      html: "/technos/html5.webp",
+      css: "/technos/sass.webp",
+    },
+    link: {
+      github: "https://github.com/Muppssy/Adrien_Moncho_3_16082021",
+      link: "https://muppssy.github.io/Adrien_Moncho_3_16082021/",
+    },
+  },
+  {
+    image: "/img/LaChouetteAgence.webp",
+    title: "LCA",
+    description:
+      "Quatième projet du parcours développeur web d' OpenClassroom. A partir d’un cahier des charges fourni par Openclassroom, ma tâche a été de réaliser un audit SEO pour l’agence fictif  La Chouette Agence.",
+    date: "06 - 2021 / 11 - 2021",
+    techno: {
+      wave: "/technos/wave.webp",
+      convertio: "/technos/convertio.webp",
+    },
+  },
+  {
+    image: "/img/Aflodrive-mini.webp",
+    title: "Aflodrive",
+    description: "Projet de mi-parcour de la formation développeur d'application web et mobile, le but du projet été de réaliser en 4 jours en équipe un site Ecommerce ",
+    date: "14/03/2022 / 03/03/2023", // exemple de date
+    techno: {
+      html: "/technos/html5.webp",
+      css: "/technos/css3.webp",
+      js: "/technos/js.webp",
+      jquery: "/technos/jquery.webp",
+      php: "/technos/php.webp",
+      mysql: "/technos/mysql.webp",
+    },
+    link: {
+      github: "https://github.com/Muppssy/aflodrive",
+    },
+  },
+  {
+    image: "/img/AfloRH-mini.webp",
+    title: "AfloRH",
+    description:
+      "Projet final du parcour de formation de développeur d’application web et mobile. A partir d’un cahier des charges fourni par Aflokkat, ma tâche a été de réaliser un gestionnaire de ressource humaine ",
+    date: "03/2022 / 03/2023", // exemple de date
+    techno: {
+      html: "/technos/html5.webp",
+      css: "/technos/css3.webp",
+      js: "/technos/js.webp",
+      jquery: "/technos/jquery.webp",
+      php: "/technos/php.webp",
+      mysql: "/technos/mysql.webp",
+    },
+    link: {
+      github: "https://github.com/Muppssy/Projet-RH-Aflokkat",
+    },
+  },
+  {
+    image: "/img/bookhub-mini.webp",
+    title: "Bookhub",
+    description:
+      "Projet final du parcour de formation de Concepteur d’application web et mobile. A partir d’un cahier des charges réaliser, ma tâche a été de faire un gestionnaire de bibliothèque, pour la Haute-corse ",
+    date: "09/2023 - 09/2024",
+    techno: {
+      html: "/technos/html5.webp",
+      css: "/technos/css3.webp",
+      js: "/technos/js.webp",
+      php: "/technos/symfony.webp",
+      twig: "/technos/twig.webp",
+      mysql: "/technos/mysql.webp",
+      elactic: "/technos/elasticsearch.webp",
+      docker: "/technos/docker.webp",
+    },
+    link: {
+      github: "https://github.com/Muppssy/Bookhub-Certif",
+    },
+  },
+];
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mes Projets</title>
+  
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rakkas&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="brg">
+    <style>
+      .card_project {
+        position: relative;
+        width: 320px;
+        height: 450px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      }
+
+      .card_project .poster {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: #1e293b;
+      }
+
+      .card_project .poster::before {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        width: 100%;
+        height: 100%;
+        transition: 0.5s;
+        z-index: 1;
+      }
+
+      .card_project:hover .poster::before {
+        bottom: 0;
+      }
+
+      .card_project .poster img {
+        transition: 0.5s;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card_project:hover .poster img {
+        transform: translateY(-85px);
+      }
+
+      .card_project .heading {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+
+      .card_project .details {
+        position: absolute;
+        width: 100%;
+        bottom: -100%;
+        left: 0;
+        z-index: 2;
+        transition: 0.5s;
+        padding: 1.2rem;
+        align-items: center;
+        background-color: #1e293b;
+      }
+
+      .card_project:hover .details {
+        bottom: 0%;
+        height: 40vh;
+      }
+
+      .card_project .details .auteur {
+        max-width: 50px;
+        border-radius: 50%;
+        margin-bottom: 0.7rem;
+      }
+
+      .card_project .details h3 {
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+
+      .card_project .details .info {
+        white-space: nowwrap;
+      }
+
+      .card_project .details .info .text1 {
+        height: auto;
+        padding-bottom: 1rem;
+        height: 153px;
+        overflow: hidden;
+      }
+
+      /* .card_project .details .tech{
+  
+      }
+      .card_project:hover .details .tech{
+        transform: translateY(0%);
+        animation-delay: 1s;
+      } */
+    </style>
+    <Loader />
+
+      <Navigation />
+
+      <Settings
+      firstColorText={firstColorText}
+      secondColorText={secondColorText}
+      fontText={fontText}
+      fontSecondText={fontSecondText}
+    />
+    <SmallNav />
+    <main class="page-main">
+ 
+
+      <section class="md:px-10 px-4 py-12 font-[sans-serif]">
+        <div class="max-w-5xl max-lg:max-w-3xl max-sm:max-w-sm mx-auto">
+          <h1 class="ftext text-3xl font-extrabold text-white mb-8">
+            Mes projets
+          </h1>
+          <div
+            class="grid grid-cols-1 justify-center sm:grid-cols-2 lg:grid-cols-3 gap-8 max-sm:gap-8"
+          >
+          {mergedData.map((data, index) => (
+            <article class="card_project bg-gray-700 rounded h-full overflow-hidden cursor-pointer transition-all ease-in-out hover:border border-white" data-modal-id="modal" data-index={index}>
+              <div class="poster">
+                <img src={data.image} alt={data.title} class="rounded-lg" />
+              </div>
+              <div class="details p-6">
+                <div class="flex items-center justify-between heading mb-3">
+                  <h3 class="text-lg font-bold text-white">{data.title}</h3>
+                  <p class="text-sm text-white">{data.date}</p>
+                </div>
+                <div class="info">
+                  <p class="text1 text-white text-sm">{data.description}</p>
+                </div>
+                {data.techno && (
+                  <div class="tech mt-10 flex items-center">
+                    {Object.entries(data.techno).map(([tech, iconPath]) => (
+                      <img
+                        class="w-[26px] h-[26px] object-cover mr-2"
+                        src={iconPath}
+                        alt={tech}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </article>
+          ))}
+          </div>
+        </div>
+      </section>
+
+  
+    
+    </main>
+
+    <Modal />
+    <Contact contact={contact} />
+    <Footer />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+
+    <script
+      defer
+      src="https://kit.fontawesome.com/96625a3117.js"
+      crossorigin="anonymous"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script defer src="/src/js/loader.js"></script>
+    <script defer src="/src/js/animeScroll.js"></script>
+  </body>
+</html>

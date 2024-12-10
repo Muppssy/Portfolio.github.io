@@ -1,0 +1,307 @@
+---
+import "../style/global.css";
+
+import Navigation from "../Components/Navigation.astro";
+import Contact from "../Components/Contact.astro";
+import Footer from "../Components/Footer.astro";
+import Loader from "../Components/Loader.astro";
+import Settings from "../Components/Settings.astro";
+import SmallNav from "../Components/SmallNav.astro";
+
+const contact = [
+  {
+    name: "Email",
+    icon: "fa-solid fa-envelope",
+    adress:"developpeur.am@gmail.com"
+  },
+  {
+    name: "Linkedin",
+    icon: "fa-brands fa-linkedin",
+    adress: "https://www.linkedin.com/in/adrien-moncho/",
+  },
+];
+
+
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>À propos</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rakkas&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Zen+Dots&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style/global.css" />
+  </head>
+  <body>
+    <Loader />
+    <main class="brg">
+
+      <Navigation />
+      <section id="home" class="relative">
+        <div
+          class="dark:bg-gray-800 flex relative z-20 items-center overflow-hidden"
+        >
+          <div
+            class="container mx-auto px-6 flex flex-col-reverse sm:flex sm:flex-row relative py-6"
+          >
+            <div class="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
+              <span class="hidden w-20 h-2 bg-gray-800 dark:bg-white mb-12">
+              </span>
+
+              <h1
+                class="text-4xl font-sans my-6 font-extrabold border- tracking-tight text-gradient sm:mb-10 sm:text-5xl md:text-3xl lg:text-4xl xl:text-6xl "
+                
+              >
+                <span
+                  class="ftext text-gradient-green block text-gray-300 xl:inline"
+                  >Adrien Moncho</span
+                >
+                <span class="stext block text-white xl:inline"
+                  >Développeur Fullstack Junior.</span
+                >
+              </h1>
+
+              <p class="text-base lg:text-xl text-gray-300 dark:text-white">
+                Passionnée par le développement web depuis trois ans, je suis à
+                la recherche d’une alternance pour approfondir mes compétences
+                et contribuer activement à des projets innovants.
+              </p>
+              <div
+                class="flex flex-col mt-8 w-full lg:flex lg:flex-row lg:gap-8"
+              >
+                <a
+                  href="/public/pdf/cv.pdf"
+                  target="_blank"
+                  class="magneto w-full mb-6 text-center btn"
+                >
+                  <span class="text"> Mon CV</span>
+                </a>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+              <img src="https://loremflickr.com/g/600/600/girl"
+               alt="Adrien Moncho"
+              loading="lazy"
+               />
+            </div>
+          </div>
+        </div>
+
+        <div class=""></div>
+      </section>
+
+      <section id="card" class="container mx-auto">
+        <div class="grid sm:grid-cols-3 grid-cols-1 sm:gap-8 gap-4 mb-16 ml-[1.3rem]">
+          <div class="">
+            <div
+            
+              class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" >
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                FullStack
+              </h5>
+              <p class="font-normal text-gray-700 dark:text-gray-400">
+                Avec une expertise en frontend et backend, je conçois des
+                solutions intégrées répondant aux besoins complets d’un projet
+                web.
+              </p>
+            </div>
+          </div>
+          <div class="">
+            <div
+              class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                Créatif & Organisé
+              </h5>
+              <p class="font-normal text-gray-700 dark:text-gray-400">
+                À la fois créative et organisé, capable d’allier innovation et
+                méthode pour transformer des idées en réalisations concrètes.
+              </p>
+            </div>
+          </div>
+          <div class="">
+            <div
+              class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+            >
+              <h5
+                class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+              >
+                Passionné & curieux
+              </h5>
+              <p class="font-normal text-gray-700 dark:text-gray-400">
+                Je suis constamment en quête de nouvelles technologies pour
+                concevoir des solutions innovantes et adaptées selon les
+                besoins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="container mx-auto">
+          <div
+            class="flex lg:flex-row flex-col md:gap-14 gap-16 justify-between lg:mt-20 mt-16"
+          >
+            <div class="w-full lg:w-6/12">
+              <h2
+                class="mx-6 font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-white"
+              >
+                Mon parcours
+              </h2>
+              <p
+                class="font-poppins text-base leading-6 text-white mb-16 mt-8 lg:w-10/12 xl:w-9/12 tracking-wider mx-6"
+              >
+                Passionné par l'informatique depuis toujours, j'ai débuté mon
+                parcours au sein de la Devfamily, une communauté d'étudiants et
+                de passionnés d'informatique. Cette expérience m'a permis
+                d'avoir un aperçu concret du travail collaboratif, tout en
+                renforçant mes compétences techniques et en développant une
+                approche organisationnelle inspirée des modèles
+                entrepreneuriaux. 
+                <br />
+                <br />
+
+                Fort de cette première immersion, j'ai poursuivi ma formation en
+                intégrant le programme de développeur web d'OpenClassrooms de
+                juin à décembre 2021, ce qui a confirmé ma vocation pour ce
+                métier.
+
+                <br />
+                <br />
+
+                De mars 2022 à mars 2023, j'ai enrichi mes compétences au sein du
+                centre de formation Aflokkat, en me spécialisant dans le développement
+                d'applications web. Après avoir validé le parcours de Concepteur
+                d'Applications Web et Mobiles, j'ai poursuivi mon évolution académique
+                et professionnelle en intégrant un Master Bachelor of Science / Chef
+                de Projet.
+
+                <br> <br>
+                Actuellement, je suis à la recherche d'une alternance,
+                dans le but de mettre en pratique mes compétences, d'approfondir
+                mes connaissances et de finaliser mon parcours professionnel de manière
+                concrète et opérationnelle.
+              </p>
+            </div>
+            <div class="w-full lg:w-6/12">
+              <div
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-12 gap-10 mb-16"
+              >
+                <!-- Team Card -->
+                <div class="flex p-4 shadow-md bg-slate-900">
+                  <div class="mr-6 w-10 h-10">
+                    <img
+                      class="rounded-full h-[2rem]"
+                      src="/logo/aflokkat.webp"
+                      alt="team card"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h2 class="mb-4 text-white">11/2024 -</h2>
+                    <p
+                      class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-white"
+                    >
+                      Master of BIHAR / Chef de projet
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Board Card -->
+                <div class="flex p-4 shadow-md bg-slate-900">
+                  <div class="mr-6 w-10 h-10">
+                    <img
+                      src="/logo/aflokkat.webp"
+                      alt="board card"
+                      class="rounded-full h-[2rem]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="">
+                    <h2 class="mb-4 text-white">09/2023 - 09/2024</h2>
+                    <p
+                      class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-white"
+                    >
+                      Bachelor Concepteur d'application web & Mobile
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Press Card -->
+                <div class="flex p-4 shadow-md bg-slate-900">
+                  <div class="mr-6 w-10 h-10">
+                    <img
+                      src="/logo/aflokkat.webp"
+                      alt="press card"
+                      class="rounded-full h-[2rem]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="">
+                    <h2 class="mb-4 text-white">03/2022 - 03/2023</h2>
+                    <p
+                      class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-white"
+                    >
+                      Développeur d'application web & mobile
+                    </p>
+                  </div>
+                </div>
+                <!-- Press Card -->
+                <div class="flex p-4 shadow-md bg-slate-900">
+                  <div class="mr-6 w-10 h-10">
+                    <img
+                      src="/logo/OpenClassrooms.webp"
+                      alt="press card"
+                      class="rounded-full h-[2rem]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div class="">
+                    <h2 class="mb-4 text-white">09/2021 - 12/2021</h2>
+                    <p
+                      class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-white"
+                    >
+                      Formation Développeur Web
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Contact contact={contact} />
+      <Footer />
+    </main>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://kit.fontawesome.com/96625a3117.js"
+      crossorigin="anonymous"></script>
+
+    <script defer src="/src/js/loader.js"></script>
+    <script defer src="/src/js/animeScroll.js"></script>
+  </body>
+</html>

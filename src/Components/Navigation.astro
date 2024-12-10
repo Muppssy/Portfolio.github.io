@@ -1,0 +1,131 @@
+---
+---
+
+<style>
+  /* Style du bouton Burger */
+  #menu-button {
+    z-index: 2000; /* Affiche le bouton au-dessus du menu */
+  }
+
+  #menu-button span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text, #151618);
+    border-radius: 2px;
+    transition:
+      transform 0.3s ease-in-out,
+      opacity 0.3s ease-in-out,
+      background-color 0.5s ease-in-out;
+  }
+
+  /* Changement de l'animation du bouton burger */
+  :root[menu-open] #menu-button span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  :root[menu-open] #menu-button span:nth-child(2) {
+    opacity: 0;
+  }
+
+  :root[menu-open] #menu-button span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  :root[menu-open] #menu-button span {
+    background-color: var(--color-bg, #ffffff);
+  }
+
+  /* Style du menu mobile */
+  #menu-container {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-text, #151618);
+    text-align: center;
+    display: grid;
+    place-content: center;
+    z-index: 1000; /* Le bouton a z-50, donc il est au-dessus */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.14, 0.65, 0.15, 1);
+  }
+
+  :root[menu-open] #menu-container {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #menu-container a {
+    font-size: 2rem;
+    line-height: 1.4;
+    transition: color 0.5s ease-in-out;
+    color: var(--color-bg, #ffffff);
+  }
+
+  #menu-container a:hover {
+    color: var(--color-accent, #e76a10);
+  }
+</style>
+
+<header class="h-24 sm:h-32 flex items-center z-30 w-full">
+  <div class="container mx-auto px-6 flex items-center justify-between">
+      <div class="uppercase text-white font-black text-3xl">
+          Adrien.M
+      </div>
+      <div class="flex items-center">
+          <!-- Desktop Navigation -->
+          <nav class="text-white uppercase text-lg lg:flex items-center hidden">
+              <a href="/" class="link py-2 px-6 flex">Accueil</a>
+              <a href="/about" class="link py-2 px-6 flex">À propos</a>
+              <a href="#expertise" class="py-2 px-6 flex">Compétences</a>
+              <a href="/project/" class="link py-2 px-6 flex">Projets</a>
+              <a href="#contact" class="py-2 px-6 flex">Contact</a>
+          </nav>
+
+          <!-- Burger Button (Visible on Mobile) -->
+          <button id="menu-button" 
+                  class="block lg:hidden absolute top-6 right-6 z-50 flex flex-col items-center justify-center w-8 h-8" 
+                  aria-label="Ouvrir le menu" 
+                  aria-expanded="false">
+              <span class="block w-6 h-1 bg-gray-800 mb-1 transition-transform"></span>
+              <span class="block w-6 h-1 bg-gray-800 mb-1 transition-opacity"></span>
+              <span class="block w-6 h-1 bg-gray-800 mb-1 transition-transform"></span>
+          </button>
+      </div>
+  </div>
+  
+  <!-- Mobile Navigation Menu -->
+  <div id="menu-container" class="fixed inset-0 bg-gray-900 text-white text-center hidden z-40">
+      <ul class="flex flex-col items-center justify-center h-full space-y-8">
+          <li><a href="/" class="text-2xl hover:text-orange-500">Accueil</a></li>
+          <li><a href="/about" class="text-2xl hover:text-orange-500">À propos</a></li>
+          <li><a href="#expertise" class="text-2xl hover:text-orange-500">Compétences</a></li>
+          <li><a href="/project/" class="text-2xl hover:text-orange-500">Projets</a></li>
+          <li><a href="#contact" class="text-2xl hover:text-orange-500">Contact</a></li>
+      </ul>
+  </div>
+</header>
+
+
+
+<script>
+  const menuButton = document.querySelector("#menu-button");
+  const rootElement = document.documentElement;
+  const menuContainer = document.getElementById('menu-container');
+  const menuLinks = document.querySelectorAll('#menu-container a');
+
+  // Ouvrir/fermer le menu mobile
+  menuButton.addEventListener("click", () => {
+    const isOpen = rootElement.toggleAttribute("menu-open");
+    menuButton.setAttribute('aria-expanded', "isOpen");
+    const newLabel = isOpen ? 'Fermer le menu' : 'Ouvrir le menu';
+    menuButton.setAttribute('aria-label', newLabel);
+  });
+
+  // Fermer le menu lorsqu'un lien est cliqué
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      rootElement.removeAttribute('menu-open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

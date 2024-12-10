@@ -1,0 +1,599 @@
+---
+
+---
+
+<style>
+
+body.modal-open {
+  overflow: hidden; /* Empêche le défilement de la page */
+}
+
+#modal-content {
+  max-height: 80vh; /* Limite la hauteur de la zone défilable */
+  overflow-y: auto; /* Active le défilement vertical */
+}
+
+#modal-content::-webkit-scrollbar {
+  width: 8px; /* Largeur de la scrollbar */
+}
+
+#modal-content::-webkit-scrollbar-thumb {
+  background-color: #4b5563; /* Couleur de la poignée */
+  border-radius: 8px; /* Coins arrondis */
+}
+
+#modal-content::-webkit-scrollbar-track {
+  background-color: #f3f4f6; /* Couleur de la piste */
+  border-radius: 8px; /* Coins arrondis */
+}
+
+
+</style>
+
+<div
+  class="lenis lenis-smooth  fixed left-0 top-0 z-[1055] hidden h-auto w-full overflow-y-auto overflow-x-hidden bg-black bg-opacity-50 outline-none"
+  id="modal"
+>
+  <div
+    id="modal-container"
+    class=" pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out mx-auto mt-10 max-w-[90%] sm:max-w-[576px] md:max-w-[800px] lg:max-w-[1140px]"
+  >
+    <div
+      class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-gray-700 bg-clip-padding text-current shadow-lg outline-none dark:bg-gray-800"
+    >
+      <!-- Modal header -->
+      <div
+        class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b border-neutral-300 p-4 dark:border-neutral-600"
+      >
+        <!-- Modal title -->
+        <h5
+          id="modal-title"
+          class="text-xl font-semibold leading-normal text-white"
+        >
+          Extra large modal
+        </h5>
+        <!-- Close button -->
+        <button
+          type="button"
+          class="box-content rounded-none border-none text-neutral-500 hover:text-neutral-800 focus:text-neutral-800 focus:shadow-none focus:outline-none dark:text-neutral-400 dark:hover:text-neutral-300"
+          data-twe-modal-dismiss
+          aria-label="Close"
+        >
+          <span class="[&>svg]:h-6 [&>svg]:w-6">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+
+
+      <!-- Modal body -->
+      <div class="relative p-4 ">
+        <!-- Insérez ici le contenu dynamique ou statique -->
+        <p id="modal-content" class="scrollbar-custom text-base text-white dark:text-gray-300">
+          Contenu de votre modal.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+   
+const contentData = [
+{
+  image: "/img/Reservia.webp",
+  ReserviaTitle: "Reservia",
+  ReserviaTitle1: "Scénario",
+  ReserviaTitle2: "Éléments fournis par l'entreprise virtuelle.",
+  ReserviaTitle3: "Cahier des charges",
+  ReserviaTitle4: "Notes sur la réalisation du projet",
+  ReserviaName: "Adrien Moncho",
+  ReserviaDate: "06 - 2021 / 11 - 2021",
+  ReserviaContent:
+    "Deuxième projet du parcours développeur web chez OpenClassrooms. L'objectif est d'intégrer la maquette d'un site de planification de vacance nommé Reservia",
+  ReserviaContent1:"La maquette est fournie pour les résolutions ordinateur et téléphone, accompagnée des images du site déclinées en formats sm, md, l et xl. Les icônes proviennent de Font Awesome, tandis que la charte graphique repose sur les couleurs bleu (#0065FC), bleu clair (#DEEBFF) et gris (#F2F2F2). La police utilisée est Raleway.",
+  ReserviaContent2:"L’intégration doit être réalisée en HTML5 et CSS3, sans utiliser de framework comme Bootstrap. Le champ de recherche doit être éditable, mais la fonctionnalité de recherche n’est pas requise. Les cartes d’hébergement et d’activité doivent être entièrement cliquables, avec des liens vides pour l’instant. Les filtres doivent changer de style au survol, et les liens “Hébergements” et “Activités” du menu doivent diriger vers des ancres sur la page. Bien qu’aucune maquette tablette ne soit fournie, la résolution tablette doit être prise en charge. Les images doivent être optimisées pour un rendu visuel attractif sans affecter le temps de chargement. Le code devra utiliser des balises sémantiques, être exempt d’erreurs ou d’alertes au validateur W3C, et être compatible avec les dernières versions de Chrome et Firefox. HTML et CSS doivent être séparés dans un dossier organisé, et le projet doit être versionné avec Git et hébergé sur un dépôt distant comme GitHub ou GitLab.",
+  ReserviaContent3:"L'integration est faite sur l'éditeur Visual Studio Code avec les plugins Live server.",
+  ReserviaContent4:"Reservia, une petite entreprise proposant un outil de planification de vacances. Leur site permet aux usagers de trouver des hébergements et des activités dans la ville de leur choix. Les hébergements peuvent également être filtrés par thématique, par exemple leur budget ou leur ambiance.",
+  ReserviaShow:"https://muppssy.github.io/Adrien_Moncho_2_30062021/",
+  ReserviaGitHub:"https://github.com/Muppssy/Adrien_Moncho_2_30062021",
+  
+},
+{
+  image: "/img/Ohmyfood.webp",
+  OhmyfoodTitle: "Ohmyfood",
+  OmfTitle1: "Objectifs",
+  OmfTitle2: "livrables",
+  OmfTitle3: "Animation",
+  OmfTitle4: "Technologie",
+  OmfTitle5: "Notes",
+  OmfTitle6:"Scénario",
+  OmfName: "Adrien Moncho",
+  OmfDate: "06 - 2021 / 11 - 2021",
+  OmfContent:
+    "Troisième projet d'intégration front-end utilisant HTML5 et Sass.",
+ OmfContent2:
+    "Ohmyfood! est une jeune startup qui voudrait s'imposer sur le marché de la restauration. L'objectif est de développer un site 100% mobile qui répertorie les menus de restaurants gastronomiques. En plus des systèmes classiques de réservation, les clients pourront composer le menu de leur repas pour que les plats soient prêts à leur arrivée. Finis, les temps d'attente au restaurant !",
+  OmfVideo: {
+    anim1: "/video/selectMenu.mp4",
+    anim2: "/video/progressiveShow.mp4",
+  },
+  OmfLink:{
+    linkShow:"https://muppssy.github.io/Adrien_Moncho_3_16082021/",
+    linkGitHub:"https://github.com/Muppssy/Adrien_Moncho_3_16082021",
+  },
+},
+{
+  image: "/img/LaChouetteAgence.webp",
+  title: "LCA",
+  LcaTitle1: "Scénario",
+  LcaTitle2: "Objectifs",
+  LcaName: "Adrien Moncho",
+  LcaDate: "06 - 2021 / 11 - 2021",
+  LcaContent: "Quatième projet de formation OpenClassroom. A partir d’un cahier des charges fourni par Openclassroom, ma tâche a été de réaliser un audit SEO pour l’agence fictif  “La Chouette Agence”.",
+  LcaContent1:"Vous travaillez pour La chouette agence, une grande agence de web design basée à Lyon. L’activité de l’entreprise a bien démarré mais aujourd’hui, elle est en perte de vitesse. Eh oui, la concurrence est rude. La fondatrice de l’entreprise, Sophie, cherche une solution pour faire repartir l’activité. En tapant “Entreprise web design Lyon” sur Internet, elle s’aperçoit que le site de l’agence apparaît seulement en deuxième page des moteurs de recherche. Par chance, un de vos collègues, Martin, lui a dit que vous étiez un spécialiste en référencement.",
+  LcaContent2:"Le projet comprend une analyse détaillée de l’état actuel du SEO du site fourni, permettant d’identifier ses points forts et ses lacunes. À partir de cette évaluation, 10 recommandations spécifiques sont proposées pour améliorer le référencement naturel du site. Ces recommandations sont ensuite mises en œuvre dans une phase d’amélioration du SEO, en veillant à optimiser chaque aspect technique et sémantique. L’accessibilité du site web est également un point clé, garantissant une navigation intuitive pour tous les utilisateurs, y compris ceux ayant des besoins spécifiques. Enfin, une comparaison des résultats est effectuée pour mesurer l’impact des optimisations, offrant ainsi une vue globale de l’efficacité des ajustements réalisés.",
+  LcaBtnContent:{
+    audit:"Audit",
+    auditPdf:"/pdf/auditSEO.pdf",
+    rapport:"Rapport",
+    rapportPdf:"/pdf/rapportSEO.pdf"
+  }
+},
+{
+  image: "/img/Aflodrive.webp",
+  drivetitle: "Aflodrive",
+  drivetitle2: "Mise en situation",
+  drivetitle3: "Liste des besoins",
+  drivetitle4: "Contrainte",
+  Name: "Adrien Moncho",
+  
+  link:{
+    linkGitHub:"https://github.com/Muppssy/aflodrive",
+  },
+},
+{
+  image: "/img/AfloRH.webp",
+  title: "AfloRH",
+  title1:"Scénario",
+  title2:"Fonctionnalités",
+  title3:"Spécificités techniques",
+  content: "Projet final du parcour de formation de développeur d’application web et mobile.",
+  link:{
+    linkGitHub:"https://github.com/Muppssy/Projet-RH-Aflokkat",
+    linkRapport:"/public/pdf/rapport.pdf",
+  },
+},
+{
+  image: "/img/Bookhub.webp",
+  BookhubName: "Adrien Moncho",
+  BookhubDate: "09 - 2023 / 09 - 2024",
+  BookhubTitle: "Bookhub",
+  BookhubTitle2: "Scénario",
+  BookhubTitle3: "Fonctionnalités",
+  
+  BookhubLink:{
+    linkGitHub:"https://github.com/Muppssy/Bookhub-Certif",
+  },
+  
+},
+];
+
+    const cards = document.querySelectorAll(".card_project");
+    const modal = document.getElementById("modal");
+    const modalContainer = document.getElementById("modal-container");
+    const modalTitle = document.getElementById("modal-title");
+    const modalContent = document.getElementById("modal-content");
+    const body = document.body;
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const index = parseInt(card.getAttribute("data-index"), 10);
+        const data = contentData[index];
+
+        if (data.title === "LCA") {
+          modalTitle.textContent = data.title;
+          modalContent.innerHTML = `
+            <article class="relative text-white">
+              <h1 class="font-bold text-4xl">${data.title}</h1>
+              <p class="text-base leading-8 my-5">${data.LcaContent}</p>
+              <div class="flex justify-center items-center">
+                <img class="w-1/2 h-full" src="${data.image}" alt="${data.title}" />
+              </div>
+              <h3 class="text-2xl font-bold my-5">#1. ${data.LcaTitle1}</h3>
+              <p>${data.LcaContent1}</p>
+              <h3 class="text-2xl font-bold my-5">#2. ${data.LcaTitle2}</h3>
+                <p>${data.LcaContent2}</p>
+              <div class="flex flex-col text-center mt-8 w-1/2 lg:flex lg:flex-row lg:gap-8">
+              <a class="w-full mb-6 btn" href="${data.LcaBtnContent.auditPdf}" target="_blank">${data.LcaBtnContent.audit}</a>
+                <a class="w-full mb-6 btn" href="${data.LcaBtnContent.rapportPdf}" target="_blank">${data.LcaBtnContent.rapport}</a>
+              </div>
+            </article>`;
+        } else if (data.drivetitle === "Aflodrive") {
+          modalTitle.textContent = data.drivetitle;
+          modalContent.innerHTML = `
+            <article class="relative text-white">
+              <h1 class="font-bold text-4xl">${data.drivetitle}</h1>
+              <p class="text-base leading-8 my-5"></p>
+              <div class="flex justify-center items-center">
+                <img class="w-1/2 h-full" src="${data.image}" alt="${data.drivetitle}" />
+              </div>
+              <div>
+               <h2 class="text-2xl font-bold my-5" >${data.drivetitle2}</h2>
+                <p>Une épicerie souhaiterai une solution de commande de produit en ligne.</p>
+              </div>
+               <h2 class="text-2xl font-bold my-5" >${data.drivetitle3}</h2>
+                <ul>
+                  <li>Une interface client: une personne sélectionne les produits souhaités et les ajoute dans le panier</li>
+                  <li>Une interface back-office: le responsable de l'épicerie ajoute ses produits à mettre en ligne.</li>
+                  <li>Une page panier avec la liste des produits ajoutés et leur quantité ainsi que le total à régler</li>
+                  <li>Chaque produit doit avoir une photo qui lui est associé</li>
+                  <li>une zone pour rechercher un produit rapidement.</li>
+                </ul>
+                 <h2 class="text-2xl font-bold my-5" >${data.drivetitle4}</h2>
+                   <p>La réalisation de ce projet s'est effectuée en équipe sur une durée de quatre jours, le cinquième jour étant réservé à la correction des éventuels bugs.</p>
+              </div>
+              <div class="flex flex-col text-center mt-8 w-full lg:flex lg:flex-row lg:gap-8">
+                <a class="w-1/2 mb-6 btn" href="${data.link.linkGitHub}" target="_blank">GitHub</a>
+              </div>
+            </article>`;
+        } else if (data.title === "AfloRH") {
+          modalTitle.textContent = data.title;
+          modalContent.innerHTML = `
+            <article class="relative text-white">
+              <h1 class="font-bold text-4xl">${data.title}</h1>
+              <p class="text-base leading-8 my-5">${data.content}</p>
+              <div class="flex justify-center items-center">
+                <img class="w-1/2 h-full" src="${data.image}" alt="${data.title}" />
+              </div>
+              <h3 class="text-2xl font-bold my-5">#1. ${data.title1}</h3>
+              <p>Dans le cadre de ma certification de développeur d’application Web et Mobile et pour le
+              besoin du centre de Formation Aflokkat, qui ne trouvait pas l’outil adéquat, il m’a été
+              demandé de développer et de concevoir un ERP (Enterprise Ressource Planning) ou
+              PGI (Progiciel de Gestion Intégré).
+              L’application a pour but d’assurer une gestion efficace de l’ensemble des collaborateurs
+              tout en garantissant la confidentialité des informations et des échanges. Elle a été conçue
+              pour simplifier, fluidifier et sécuriser la communication.
+              J’assure le développement du projet tant sur la partie Front End que Back End ainsi que
+              la partie Base de données.
+              AfloRH centralise toutes les données de l’ensemble des salariés du centre et confère aux
+              utilisateurs le droit de se connecter et se déconnecter du tableau de bord en fonction de
+              leur rôle hiérarchique, avec une gestion des différents Rôles tels que Directeur, Stagiaire,
+              Responsable RH, Formateur etc.
+              Les rôles du RH et du directeur possèderont tous les droits et privilèges nécessaires pour
+              gérer efficacement l’application, comme la création de nouveau collaborateur ainsi que la
+              création des rôles, ou traiter les différents types de congés.
+              Ces droits permettront l’utilisation de multiples fonctionnalités indispensables à la
+              gestion optimisée des dossiers individuels de l’ensemble des collaborateurs tant dans
+              l’approche règlementaire que managériale.
+              Ainsi, j’ai opté pour la mise en place d’un tableau dynamique intégrant l’état de présence
+              de chaque collaborateur, qui se trouve en congé, en arrêt, ou en formation</p>
+
+              <h3 class="text-2xl font-bold my-5">#2. ${data.title2}</h3>
+              <div>
+                Le centre de formation Aflokkat désire une application web de type gestion de
+                ressources humaines :
+                Ne trouvant pas sur le marché le logiciel adéquat, il m’a été demandé de le
+                concevoir, puis de le développer.
+                L’application sera découpée en plusieurs parties :
+                <br>
+                <br>
+                <ul>
+                  <li>Gestion des congés, suivi des collaborateurs (en congés, en arrêt maladie…).</li>
+                  <li>Dépôts des documents (arrêt maladie par exemple).</li>
+                  <li>Demande de rdv auprès des managers, validation des diverses demandes par les n+1, n+2.</li>
+                  <li>Création / Modification / Suppression / Validation de demandes :
+                      l’utilisateur crée une demande (congé, arrêt maladie …) laquelle devra être validée
+                      par son supérieur direct.</li>
+                  <li>Mise en place de la plateforme de suivi des collaborateurs : l’utilisateur peut
+                      définir, suivre et vérifier la disponibilité des collaborateurs : il sait en temps réel qui est
+                      disponible, qui est en formation, qui est en arrêt, qui est en congé.</li>
+                </ul>
+              </div>
+              <h3 class="text-2xl font-bold my-5">#2. ${data.title3}</h3>
+              <ul>
+                <li>Responsive Web Design : Oui (Mobile first)</li>
+                <li>Moteur de recherche : (à venir)</li>
+                <li>Gestions des utilisateurs : Oui</li>
+                <li>Gestion des droits des utilisateurs : Oui</li>
+                <li>Multilinguisme : (à définir)</li>
+                <li>Live chat : (à venir) </li>
+                <li> Progressive Web App : (à définir)</li>
+              </ul>
+              <div class="flex flex-col text-center mt-8 w-full lg:flex lg:flex-row lg:gap-8">
+                <a class="w-1/2 mb-6 btn" href="${data.link.linkGitHub}"target="_blank">GitHub</a>
+                <a class="w-1/2 mb-6 btn" href="${data.link.linkRapport}"target="_blank">Rapport</a>
+              </div>
+            </article>`;
+        } else if (data.BookhubTitle === "Bookhub") {
+          modalTitle.textContent = data.BookhubTitle;
+          modalContent.innerHTML = `
+          <article class="relative text-white">
+            <div>
+              <div
+                class="mt-3 text-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+                <div class="px-10 py-10">
+                  <h1 class="font-bold text-4xl">${data.BookhubTitle}</h1>
+                  <div class="py-5 text-sm font-regular text-gray-900 flex">
+                    <a href="#" class="flex flex-row items-center text-gray-200 mr-3">
+                      <i class="fa-solid fa-user"></i>
+                      <span class="ml-1"> ${data.BookhubName} </span>
+                    </a>
+                    <span class="ml-3 text-white flex flex-row items-center">
+                      <i class="fa-regular fa-calendar-days"></i>
+                      <span class="ml-1"> ${data.BookhubDate} </span>
+                    </span>
+                  </div>
+                  <hr />
+                  <p class="text-base leading-8 my-5"></p>
+                  <div class="flex justify-center items-center">
+                    <img class="w-1/2 h-full" src="${data.image}" alt="${data.BookhubTitle}" />
+                  </div>
+                  <h3 class="text-2xl font-bold my-5">#1. ${data.BookhubTitle2}</h3>
+                  <p class="text-base leading-8 my-5">
+                    Afin de faciliter la gestion des médiathèques, les municipalités de Haute-Corse m'ont demandé de concevoir et de développer une application de gestion pour les bibliothécaires de la région. BookHub est une application web moderne et conviviale qui vise à offrir aux bibliothécaires ainsi qu'aux usagers une plateforme d'emprunt de livres dans leurs bibliothèques préférées.
+                    BookHub centralise les livres dans une base de données avec la possibilité de filtrer les recherches par commune. L'application permet aux utilisateurs de rechercher, réserver et récupérer facilement des livres, des bandes dessinées   dans les lieux de leur choix.
+                    Un système de jetons sera implémenté pour offrir des avantages supplémentaires aux utilisateurs les plus assidus. Chaque emprunt génère un jeton et, après un certain nombre de jetons accumulés, les utilisateurs pourront emprunter un ou plusieurs livres supplémentaires. 
+                    Afin d'officialiser l'emprunt des livres, l'utilisateur recevra un récapitulatif de son emprunt, qui sera également transmis au bibliothécaire.
+
+                    </p>
+                  <h3 class="text-2xl font-bold my-5">#2.${data.BookhubTitle3}</h3>
+                  <ul>
+                    <li>- Système de commentaire</li>
+                    <li>- Profils utilisateur avec gestion des informations personnelles et historique des emprunts.</li>
+                    <li>- Protection des données pour garantir la sécurité et la confidentialité.</li>
+                    <li>- Gestion des rôles</li>
+                    <li>- Application responsive</li>
+                    <li>- Authentification et validation du compte par email</li>
+                    <li>- Recherche de livres par titre, auteur, éditeur, genre, via ElasticSearch</li>
+                    <li>- Création d'un compte utilisateur </li>
+                    <li>- Connexion à un compte utilisateur </li>
+                    <li>- Affichage de l'historique des emprunts d'un utilisateur  </li>
+                  </ul>
+                 
+                  <div
+                    class="flex flex-col text-center mt-8 w-full lg:flex lg:flex-row lg:gap-8">
+                    <a class="w-1/2 mb-6 btn" href="${data.BookhubLink.linkGitHub}" class="text"
+                      >Github</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>`;
+        } else if (data.OhmyfoodTitle === "Ohmyfood") {
+          modalTitle.textContent = data.OhmyfoodTitle;
+          modalContent.innerHTML = `
+<article class="relative max-w-7xl mx-auto text-white">
+  <div>
+    <div
+      class="mt-3 text-white rounded-lg flex flex-col justify-between leading-normal">
+      <div class="px-4 py-4">
+        <h1 class="font-bold text-4xl">${data.OhmyfoodTitle}</h1>
+        <div class="py-5 text-sm font-regular text-white flex">
+          <a href="#" class="flex flex-row items-center text-white mr-3">
+            <i class="fa-solid fa-user"></i>
+            <span class="ml-1"> ${data.OmfName}</span>
+          </a>
+          <span class="ml-3 text-white flex flex-row items-center">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span class="ml-1"> ${data.OmfDate}</span>
+          </span>
+        </div>
+        <hr />
+        <p class="text-base leading-8 my-6">${data.OmfContent}</p>
+        <div class="flex justify-center items-center ">
+          <img
+            class="w-1/2 h-full rounded-lg"
+            src="${data.image}"
+            alt="${data.OhmyfoodTitle}"
+          />
+        </div>
+        <h3 class="text-2xl font-bold my-5">#1. ${data.OmfTitle6}</h3>
+         <p class="text-base leading-8 mb-4">
+             ${data.OmfContent2}
+            </p>
+        <h3 class="text-2xl font-bold my-5">#2. ${data.OmfTitle1}</h3>
+        <ul class="text-base leading-8 my-5 pb-4 border-b">
+          <li>
+            - Développer un site proposant le menu de 4 grands restaurants
+            parisiens.
+          </li>
+          <li>
+            - Permettre la réservation en ligne et la composition de menus.
+          </li>
+        </ul>
+        <h3 class="text-2xl font-bold my-5">#3. ${data.OmfTitle2}</h3>
+        <ul class="border-b pb-4">
+          <li>Page d’accueil</li>
+          <li>Pages de menu (x4)</li>
+        </ul>
+        <h3 class="text-2xl font-bold my-5">#4. ${data.OmfTitle3}</h3>
+        <h4 class="text-xl font-bold">Button</h4>
+        <p class="text-base leading-8 my-5">
+          Au survol, la couleur de fond des boutons principaux devra légèrement
+          s’éclaircir. L’ombre portée devra également être plus visible.<br />
+          À terme, les visiteurs pourront sauvegarder leurs menus préférés. Pour
+          ça, un bouton "J’aime" en forme de cœur est présent sur la maquette.
+          Au clic, il devra se remplir progressivement. Pour cette première
+          version, l’effet peut apparaître au survol au lieu du clic.
+        </p>
+        <h4 class="text-xl font-bold">Page d’accueil</h4>
+        <p class="text-base leading-8 my-5 border-b pb-4">
+          Quand l’application aura plus de menus, un “loading spinner” sera
+          nécessaire. Sur cette maquette, nous souhaitons en avoir un aperçu. Il
+          devra apparaître pendant 1 à 3 secondes quand on arrive sur la page
+          d'accueil, couvrir l'intégralité de l'écran, et utiliser les
+          animations CSS (pas de librairie). Le design de ce loader n’est pas
+          défini, toute proposition est donc la bienvenue tant qu’elle est
+          cohérente avec la charte graphique du site.
+        </p>
+        <h4 class="text-xl font-bold">Pages de menu</h4>
+        <div class="flex justify-center space-x-6 pb-4 w-full">
+          <div class="w-[50%] lg:w-[45%] my-5 leading-8">
+            À l’arrivée sur la page, les plats devront apparaître
+            progressivement avec un léger décalage dans le temps. Ils pourront
+            soit apparaître un par un, soit par groupe “Entrée”, “Plat” et
+            “Dessert”. Un exemple de l’effet attendu est fourni.
+          </div>
+          <div>
+            <video
+              src="${data.OmfVideo.anim1}"
+              controls
+              class="w-[85%] mb-4 rounded-lg"
+            ></video>
+          </div>
+        </div>
+        <h4 class="text-xl font-bold">Sélection du plats</h4>
+        <div
+          class="flex flex-wrap justify-center items-center space-x-6 w-full mt-4 pb-4 border-b"
+        >
+          <div>
+            <video
+              src="${data.OmfVideo.anim2}"
+              controls
+              class="w-[100%] h-[18vh] rounded-lg"
+            ></video>
+          </div>
+          <div class="w-[100%] md:w-[50%] leading-8">
+            Le visiteur peut ajouter un plat à sa commande en cliquant dessus,
+            faisant apparaître une coche qui glisse de droite à gauche. Pour
+            cette version, l’effet peut apparaître au survol plutôt qu’au clic.
+            Si le nom du plat est trop long, il sera tronqué avec des points de
+            suspension. Un exemple de l’effet attendu est fourni.
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <h3 class="text-2xl font-bold my-5">#5.${data.OmfTitle4}</h3>
+          <div class="flex flex-col border-b">
+            <p class="text-base leading-8">Autorisés: HTML / CSS / Sass</p>
+            <p class="text-base leading-8">Recommandée: HTML / Sass</p>
+            <p class="text-base leading-8 mb-4">
+              Interdit: Javascript / Frameworks CSS / Inline CSS
+            </p>
+          </div>
+        </div>
+        <h3 class="text-2xl font-bold my-5">#6.${data.OmfTitle5}</h3>
+        <div class="flex justify-start space-y-2 md:justify-around flex-wrap">
+          <div class="flex justify-around w-full ">
+            <div>
+            <h4 class="text-xl font-semibold leading-8">Police :</h4>
+            <ul>
+              <li>Logo & titres: Shrikhand</li>
+              <li>Texte: Roboto</li>
+            </ul>
+            </div>
+
+            <div>
+            <h4 class="text-xl font-semibold leading-8">Couleur :</h4>
+            <ul>
+               <li>Primaire: #9356DC</li>
+               <li>Secondaire: #FF79DA</li>
+               <li>Tertiaire: #99E2D0</li>
+            </ul>
+            </div>
+
+            <div>
+            <h4 class="text-xl font-semibold leading-8">Contraintes:</h4>
+            <ul>
+               <li>Approche mobile-first: oui</li>
+               <li>Maquette mobile : oui</li>
+               <li>Maquette desktop : à improviser</li>
+               <li>Validation W3C HTML : oui</li>
+            </ul>
+            </div>
+        </div>
+
+        <div class="flex flex-col text-center mt-10 w-full lg:flex lg:flex-row lg:gap-8">
+          <a class="w-full mt-6 btn" href="${data.OmfLink.linkGitHub}" target="_blank" class="text">Github</a>
+          <a class="w-full mt-6 btn" href="${data.OmfLink.linkShow}"  target="_blank" class="text">Voir projets</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+          `;
+        } else {
+          // Contenu par défaut pour les autres projets
+          modalTitle.textContent = data.ReserviaTitle;
+          modalContent.innerHTML = `
+            <article class="relative text-white">
+  <div>
+    <div
+      class="mt-3 text-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal"
+    >
+      <div class="px-10 py-10">
+        <h1 class="font-bold text-4xl">${data.ReserviaTitle}</h1>
+        <div class="py-5 text-sm font-regular text-gray-900 flex">
+          <a href="#" class="flex flex-row items-center text-gray-200 mr-3">
+            <i class="fa-solid fa-user"></i>
+            <span class="ml-1"> ${data.ReserviaName} </span>
+          </a>
+          <span class="ml-3 text-white flex flex-row items-center">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span class="ml-1"> ${data.ReserviaDate} </span>
+          </span>
+        </div>
+        <hr />
+        <p class="text-base leading-8 my-5">${data.ReserviaContent}</p>
+        <div class="flex justify-center items-center">
+          <img class="w-1/2 h-full" src="${data.image}" alt="" />
+        </div>
+        <h3 class="text-2xl font-bold my-5">#1. ${data.ReserviaTitle1}</h3>
+        <p class="text-base leading-8 my-5">${data.ReserviaContent4}</p>
+        <h3 class="text-2xl font-bold my-5">#2. ${data.ReserviaTitle2}</h3>
+        <p class="text-base leading-8 my-5">${data.ReserviaContent1}</p>
+        <h3 class="text-2xl font-bold my-5">#3. ${data.ReserviaTitle3}</h3>
+        <p class="text-base leading-8 my-5">${data.ReserviaContent2}</p>
+        <h3 class="text-2xl font-bold my-5">#4. ${data.ReserviaTitle4}</h3>
+        <p class="text-base leading-8 my-5">${data.ReserviaContent3}</p>
+        <div
+          class="flex flex-col text-center mt-8 w-full lg:flex lg:flex-row lg:gap-8">
+          <a class=" text w-full mb-6 btn" href="${data.ReserviaGitHub}" target="_blank">Github</a>
+          <a class="text w-full mb-6 btn" href="${data.ReserviaShow}"target="_blank">Voir projets</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+          `;
+        }
+
+        modal.classList.remove("hidden");
+        modalContainer.classList.remove("opacity-0", "translate-y-[-50px]");
+        modalContainer.classList.add("opacity-100", "translate-y-0");
+        body.classList.add("modal-open");
+      });
+    });
+
+    const closeModalButtons = document.querySelectorAll("[data-twe-modal-dismiss]");
+    closeModalButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        modalContainer.classList.add("opacity-0", "translate-y-[-50px]");
+        modalContainer.classList.remove("opacity-100", "translate-y-0");
+
+        setTimeout(() => {
+          modal.classList.add("hidden");
+        }, 300);
+
+        body.classList.remove("modal-open");
+      });
+    });
+  });
+</script>
+
+
