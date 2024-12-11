@@ -1,3 +1,7 @@
+import Lenis from '@studio-freight/lenis';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+
 document.addEventListener("DOMContentLoaded", () => {
   // Vérification et enregistrement de GSAP et ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
