@@ -1,3 +1,5 @@
+import gsap from 'gsap';
+
 document.addEventListener('DOMContentLoaded', function () {
     // Sélectionner tous les éléments avec la classe "magneto"
     const magnetos = document.querySelectorAll(".magneto");

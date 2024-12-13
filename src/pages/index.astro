@@ -4,64 +4,10 @@ import "../style/swiper.css";
 
 import Navigation from "../Components/Navigation.astro";
 import Footer from "../Components/Footer.astro";
-import Settings from "../Components/Settings.astro";
-import SmallNav from "../Components/SmallNav.astro";
 import Contact from "../Components/Contact.astro";
 
 const pageTitle = "Adrien Moncho";
 
-const firstColorText = [
-  "w-10 h-10 rounded-full bg-gradient-blue cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-gradient-red cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-gradient-orange cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-gradient-green cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-gradient-yellow cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-gradient-pink cursor-pointer hover:border-2 hover:border-neutral-500",
-];
-const secondColorText = [
-  "w-10 h-10 rounded-full bg-blue-500 cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-red-500 cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-orange-500 cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-green-500 cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-yellow-500 cursor-pointer hover:border-2 hover:border-neutral-500",
-  "w-10 h-10 rounded-full bg-pink-500 cursor-pointer hover:border-2 hover:border-neutral-500",
-];
-
-const fontText = [
-  {
-    class:
-      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-roboto hover:border-2 hover:border-white",
-    font: "Aa",
-  },
-  {
-    class:
-      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-poppins hover:border-2 hover:border-white",
-    font: "Aa",
-  },
-  {
-    class:
-      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-raleway hover:border-2 hover:border-white",
-    font: "Aa",
-  },
-];
-
-const fontSecondText = [
-  {
-    class:
-      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-oxanium hover:border-2 hover:border-white",
-    font: "Aa",
-  },
-  {
-    class:
-      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer font-zendots hover:border-2 hover:border-white",
-    font: "Aa",
-  },
-  {
-    class:
-      "w-10 h-10 flex items-center justify-center text-white text-center font-bold bg-gray-500 rounded-full cursor-pointer  font-rakkas hover:border-2 hover:border-white",
-    font: "Aa",
-  },
-];
 
 const images = [
   { projet: "/img/Reservia.webp", alt:"second projet Openclassroom" },
@@ -141,14 +87,6 @@ const others = [
 
   <body class="brg w-auto">
     <main id="page-content" class="relative w-full">
-      <Settings
-        firstColorText={firstColorText}
-        secondColorText={secondColorText}
-        fontText={fontText}
-        fontSecondText={fontSecondText}
-      />
-      <SmallNav />
-
       <section id="home" class="relative">
         <Navigation />
         <div
@@ -422,6 +360,6 @@ const others = [
     <!-- Script JavaScript -->
 
     <script defer type="module" src="/src/js/script.js"></script>
-    <script defer src="/src/js/magnetButton.js "></script>
+    <script defer type="module" src="/src/js/magnetButton.js "></script>
   </body>
 </html>
